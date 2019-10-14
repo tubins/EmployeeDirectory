@@ -61,7 +61,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		Session currentSession = entityManger.unwrap(Session.class);
 
 		// save the employee
-		currentSession.save(theEmployee);
+		currentSession.saveOrUpdate(theEmployee);
 	}
 
 	@Override
