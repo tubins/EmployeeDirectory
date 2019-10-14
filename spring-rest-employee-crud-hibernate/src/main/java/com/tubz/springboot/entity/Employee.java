@@ -28,4 +28,12 @@ public class Employee {
 	// Add default constructor which is required by Hibernate
 	public Employee() {
 	}
+
+	// Add constructor using fields except id because we are using auto generation
+	// strategy
+	public Employee(String firstName, String lastName, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 }
