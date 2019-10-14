@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tubz.springboot.dao.EmployeeDAO;
 import com.tubz.springboot.entity.Employee;
 import com.tubz.springboot.service.EmployeeService;
 
@@ -28,4 +28,16 @@ public class EmployeeController {
 	public List<Employee> findAll() {
 		return employeeService.findAll();
 	}
+
+	// Add mapping for GET /employee/{employeeId}
+	@GetMapping("/employees/{employeeId}")
+	public Employee getEmployee(@PathVariable int employeeId) {
+		Employee theEmployee = employeeService.findById(employeeId);
+		if (theEmployee == null) {
+			throw new RuntimeException("Employee id not found - " + employeeId);
+		}
+		return theEmployee;
+	}
+	
+	// 
 }
