@@ -24,4 +24,8 @@ public class Employee {
 
 	@Column(name = "email")
 	private String email;
+
+	// Add default constructor which is required by Hibernate
+	public Employee() {
+	}
 }
