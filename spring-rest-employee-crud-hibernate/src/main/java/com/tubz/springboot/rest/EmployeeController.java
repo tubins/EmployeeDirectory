@@ -9,22 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tubz.springboot.dao.EmployeeDAO;
 import com.tubz.springboot.entity.Employee;
+import com.tubz.springboot.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
 
 	// Inject EmployeeDAO
-	private EmployeeDAO employeeDAO;
+	private EmployeeService employeeService;
 
 	@Autowired
-	public EmployeeController(EmployeeDAO theEmployeeDAO) {
-		employeeDAO = theEmployeeDAO;
+	public EmployeeController(EmployeeService theEmployeeService) {
+		employeeService = theEmployeeService;
 	}
 
 	// Expose "/employees" and return list of employees
 	@GetMapping("/employees")
 	public List<Employee> findAll() {
-		return employeeDAO.findAll();
+		return employeeService.findAll();
 	}
 }
